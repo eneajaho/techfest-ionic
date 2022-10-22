@@ -1,0 +1,7 @@
+{
+  "name": "techfest-ionic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

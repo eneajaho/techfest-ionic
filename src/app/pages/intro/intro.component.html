@@ -1,0 +1,62 @@
+<ion-header no-border [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button [hidden]="!showSkip" (click)="startApp()" color="primary">Skip</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <swiper
+    class="swiper"
+    #swiper
+    [config]="config"
+    (slideChange)="onSlideChange()"
+  >
+    <ng-template swiperSlide>
+      <div class="first-slide-container">
+        <img alt="" src="assets/images/alpet.jpg" class="first-slide-image" />
+        <div class="slide-text">
+          <h2 class="slide-title">
+            Welcome to
+            <b>Albania</b>
+          </h2>
+          <p>
+            Choose your experience
+          </p>
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template swiperSlide>
+      <div class="slide-container">
+        <h2 class="slide-title">From <b>arrival</b> to <b>departure</b></h2>
+        <img alt="" src="assets/images/arrival-departure.jpg" class="slide-image" />
+      </div>
+    </ng-template>
+
+    <ng-template swiperSlide>
+      <div class="slide-container">
+        <h2 class="slide-title">Book your hotel, transport and tour guide from one place!</h2>
+        <img alt="" src="assets/images/book.jpg" class="slide-image" />
+      </div>
+    </ng-template>
+
+    <ng-template swiperSlide>
+      <div class="slide-container">
+        <h2 class="slide-title">Ready made your itineraries for you!</h2>
+        <img alt="" src="assets/images/itineraries.png" class="slide-image" />
+      </div>
+    </ng-template>
+
+    <ng-template swiperSlide>
+      <div class="slide-container">
+        <h2 class="slide-title">Ready to book?</h2>
+        <ion-button fill="clear" (click)="startApp()">
+          Continue
+          <ion-icon slot="end" name="arrow-forward"></ion-icon>
+        </ion-button>
+      </div>
+    </ng-template>
+  </swiper>
+</ion-content>
+
