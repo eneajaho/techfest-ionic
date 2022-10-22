@@ -1,0 +1,71 @@
+<ion-header no-border collapse="fade" [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Login</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <form
+    ngForm
+    #ngForm="ngForm"
+    (ngSubmit)="handleLogin(ngForm)"
+    style="margin-top: 30px">
+    <ion-item lines="full" class="ion-margin-top" style="padding: 0 20px">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input
+        #emailInput="ngModel"
+        type="email"
+        [required]="true"
+        name="email"
+        [(ngModel)]="form.email"
+        placeholder="ex: john@doe.com">
+      </ion-input>
+      <span
+        *ngIf="emailInput.touched && emailInput.hasError('required')"
+        slot="error">
+        Email is required!
+      </span>
+    </ion-item>
+    <ion-item lines="full" class="ion-margin-top ion-margin-bottom" style="padding: 0 20px">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input
+        #passwordInput="ngModel"
+        name="password"
+        [required]="true"
+        [(ngModel)]="form.password"
+        placeholder="Password"
+        type="password">
+      </ion-input>
+      <span
+        *ngIf="passwordInput.touched && passwordInput.hasError('required')"
+        slot="error">
+        Password is required!
+      </span>
+    </ion-item>
+
+    <section class="ion-padding-horizontal ion-padding-top ion-margin-bottom">
+      <ion-button expand="block" type="submit" [disabled]="loading">
+        <ion-spinner
+          name="crescent"
+          *ngIf="loading"
+          slot="start"
+          class="ion-margin-end">
+        </ion-spinner>
+        {{ loading ? 'Logging in' : 'Log in' }}
+      </ion-button>
+    </section>
+  </form>
+
+  <ion-item lines="none" style="padding: 0 20px; margin-top: 30px">
+    <ion-label>Don't you have an account?</ion-label>
+    <ion-button fill="clear" routerLink="/auth/register">
+      Register
+    </ion-button>
+  </ion-item>
+</ion-content>

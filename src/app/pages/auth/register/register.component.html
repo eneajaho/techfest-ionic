@@ -1,0 +1,76 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Register</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="p-4">
+    <form ngForm #ngForm="ngForm" (submit)="handleSubmit(ngForm)" style="margin-top: 30px; padding: 0 20px">
+      <ion-item lines="full" class="ion-margin-top">
+        <ion-label position="floating">Name</ion-label>
+        <ion-input
+          #nameInput="ngModel"
+          name="name"
+          required="true"
+          [(ngModel)]="form.name"
+          placeholder="Your name">
+        </ion-input>
+        <span
+          *ngIf="nameInput.touched && nameInput.hasError('required')"
+          slot="error">
+          Name is required!
+        </span>
+      </ion-item>
+      <ion-item lines="full" class="ion-margin-top">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input
+          #emailInput="ngModel"
+          name="email"
+          type="email"
+          required="true"
+          [(ngModel)]="form.email"
+          placeholder="example@gmail.com">
+        </ion-input>
+        <span
+          *ngIf="emailInput.touched && emailInput.hasError('required')"
+          slot="error">
+         Email is required!
+        </span>
+      </ion-item>
+      <ion-item lines="none" class="ion-margin-top">
+        <ion-label position="floating">Password</ion-label>
+        <ion-input
+          #passwordInput="ngModel"
+          name="password"
+          type="password"
+          required="true"
+          [(ngModel)]="form.password"
+          placeholder="Your password">
+        </ion-input>
+        <span
+          *ngIf="passwordInput.touched && passwordInput.hasError('required')"
+          slot="error">
+          Password is required!
+        </span>
+      </ion-item>
+      <section class="ion-padding-horizontal ion-padding-top">
+        <ion-button expand="block" type="submit" [disabled]="loading">
+          <ion-spinner name="crescent" *ngIf="loading" slot="start" class="ion-margin-end">
+          </ion-spinner>
+          {{ loading ? 'Registering...' : 'Register' }}
+        </ion-button>
+      </section>
+    </form>
+
+    <ion-item lines="none" style="margin-top: 50px; padding: 0 20px">
+      <ion-label>Do you have an account?</ion-label>
+      <ion-button fill="clear" routerLink="/auth/login" routerDirection="back">Login</ion-button>
+    </ion-item>
+  </div>
+</ion-content>
